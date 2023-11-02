@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
+// 문자열 길이 구하는 함수
 int get_length(char const* str)
 {
 	int length = 0;
@@ -14,12 +16,19 @@ int get_string_count(char const* str, char c)
 {
     int length = get_length(str);
     int found_count = 0;
-    for (int i = 0; i < length; i++)
+
+	bool on_counting = 0;
+	for (int i = 0; i < length; i++)
 	{
 		if (*(str + i) == c)
-			found_count++;
+			on_counting = 0;
+		else
+		{
+			if (!on_counting)
+				found_count++;
+			on_counting = 1;
+		}
 	}
-	found_count++;
 
     return found_count;
 }
@@ -27,47 +36,60 @@ int get_string_count(char const* str, char c)
 char** fn_split(char const* str, char c)
 {
 	char** splitted;
-	int length = get_length(str);
-	int found_count = 0;
 
-	// 1. 구분자인 c가 몇 개인지? 그 개수 + 1만큼 2차원 배열의 크기를 정해주자.
-	found_count = get_string_count(str, c);
+	int string_count = get_string_count(str, c);
+	splitted = malloc(sizeof(char*) * string_count);
 
-	splitted = (char **) malloc(found_count);
+	if (splitted == NULL)
+		return NULL;
 
-	// 2. 나눠지는 문자열 개수 만큼 또 배열의 크기를 할당해주자.
-	int size = 0;
+	bool on_counting = 0;
+	int string_length = 0;
 	int string_index = 0;
-	for (int i = 0; i < length; i++, size++)
+	int original_length = get_length(str);
+	for (int i = 0; i < original_length; i++)
 	{
 		if (*(str + i) == c)
 		{
-			splitted[string_index] = (char *)malloc(size + 1);
+			// malloc 이 NULL 이면?
+			splitted[string_index] = malloc(sizeof(char) * (string_length + 1)); // '\0' 들어갈 공간까지 확보하자.
 
-			size = -1;
-			string_index++;
+			if (splitted[string_index] == NULL)
+			{
+				for (int j = string_index - 1; j >= 0; j--)
+					free(splitted[j]);
+				return NULL;
+			}
+
+			string_index += 1;
+			on_counting = 0;
+			string_length = 0;
+		}
+		else
+		{
+			string_length++;
+			on_counting = 1;
 		}
 	}
-	if (size >= 0)
-		splitted[string_index] = (char *)malloc(size + 1);
 
-	// 3. 실제로 2차원 배열에 문자(char) 를 각각 넣어주자.
+	bool on_writing = 0;
 	string_index = 0;
 	int char_index = 0;
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < original_length; i++)
 	{
 		if (*(str + i) == c)
 		{
-			splitted[string_index][char_index] = '\0';
-			string_index++;
+			if (on_writing)
+				*(splitted[string_index++] + char_index) = '\0';
+			on_writing = 0;
 			char_index = 0;
 		}
 		else
 		{
-			splitted[string_index][char_index++] = *(str + i);
+			*(splitted[string_index] + char_index++) = *(str + i);
+			on_writing = 1;
 		}
 	}
-	splitted[string_index][char_index] = '\0';
 
 	return splitted;
 }
@@ -75,12 +97,19 @@ char** fn_split(char const* str, char c)
 int main(int argc, char *argv[])
 {
 	char **result;
-	printf("받은 문자열 : %s\n자를 문자 기준 : %c\n", argv[1], *argv[2]);
+
+	printf("%d\n", get_string_count(argv[1], *argv[2]));
+
 	result = fn_split(argv[1], *argv[2]);
 
     int string_count = get_string_count(argv[1], *argv[2]);
+	if (result == NULL)
+		return 0;
 	for (int i = 0; i < string_count; i++)
 	{
 		printf("%d번째 문자 : '%s'\n", i, *(result + i));
 	}
 }
+
+// aasdfasdfqweraaqweraqwera a
+// sdf, sdfqwer, qwer, qwer
