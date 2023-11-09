@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\c_basics",
+    "\\c_basics\\Struct",
     "\\Project_Tasks"
   ],
+  "SelectedNode": "\\c_basics\\VariableVoid.c",
   "PreviewInSolutionExplorer": false
 }
