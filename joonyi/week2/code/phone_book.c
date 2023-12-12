@@ -127,7 +127,7 @@ int main()
 	char names[size][100];
 	char phones[size][100];
 	char notes[size][1000];
-	bool existings[size];
+	bool existings[size]; // memset 이란 방법도 있음.
 
 	fill_bool_array(existings, size, 0);
 	printf("existings %d\n", get_first_existing(existings, size));
@@ -365,7 +365,6 @@ int main()
 				printf("삭제할 전화번호부가 없습니다.\n");
 				continue;
 			}
-
 			printf("삭제할 수 있는 인덱스 : ");
 			for (int i = 0; i < size; i++)
 			{
