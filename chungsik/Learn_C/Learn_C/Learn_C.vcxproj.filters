@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="c_basics">
+      <UniqueIdentifier>{b3592bb5-8c5f-4c9f-97b1-4f29c811b51b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project_Tasks">
+      <UniqueIdentifier>{8f51f7db-f660-4c0e-ad58-5631bbe211a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="c_basics\Struct">
+      <UniqueIdentifier>{fe8eb981-38e8-4403-a7cd-c5ece1d92969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MakeFile">
+      <UniqueIdentifier>{2218eb12-a8ed-4b3e-aa11-f8d726563728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Learn_C_Make">
+      <UniqueIdentifier>{3de12930-7a4a-4ca1-bd2f-f08b5ea4e477}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\c_basics\Memcpy.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\MultiplePtr.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\PointerRef.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\stringFunc.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\UseFunctionSys.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\VariableVoid.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\ArrayPointBubble.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\Atoi.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\changeWords.c">
+      <Filter>c_basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\c_basics\Struct\Struct.c">
+      <Filter>c_basics\Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Project_Tasks\PJ_PhoneBook.c">
+      <Filter>Project_Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Learn_C_make\Learn_C_make.c">
+      <Filter>Learn_C_Make</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\c_basics\Struct\Struct.h">
+      <Filter>c_basics\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MakeFiles.h">
+      <Filter>MakeFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Learn_C_make\Learn_C_make.h">
+      <Filter>Learn_C_Make</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Project_Tasks\PhoneBook.txt">
+      <Filter>Project_Tasks</Filter>
+    </Text>
+    <Text Include="..\Learn_C_make\CMakeLists.txt">
+      <Filter>Learn_C_Make</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\CMakePresets.json" />
+  </ItemGroup>
+</Project>
