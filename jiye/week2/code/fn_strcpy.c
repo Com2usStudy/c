@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 //문자열 src를 dest로 복사하는 함수
+//오버플로우를 방지하기 위해서, dest가 가리키는 배열의 크기는 반드시 src문자열의 크기와 같거나 이보다 커야 한다. 
+//또한, 복사하는 영역이 src와 겹치면 안된다.
 char* fn_strcpy(char* dest, char* src);
 
 int main(){

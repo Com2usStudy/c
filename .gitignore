@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+.vscode
+jiye.code-workspace
+jiye21.code-workspace
